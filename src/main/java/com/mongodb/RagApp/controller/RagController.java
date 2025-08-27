@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 public class RagController {
 
-  private final ChatClient chatClient;
+    private final ChatClient chatClient;
 
-  public RagController(ChatClient.Builder builder, VectorStore vectorStore) {
-    this.chatClient = builder.defaultAdvisors(new QuestionAnswerAdvisor(vectorStore)).build();
-  }
+    public RagController(ChatClient.Builder builder, VectorStore vectorStore) {
+        this.chatClient = builder.defaultAdvisors(new QuestionAnswerAdvisor(vectorStore)).build();
+    }
 
     @GetMapping("/faq")
     public String faq(@RequestParam(value = "message", defaultValue = "How to analyze time-series data with Python and MongoDB? Explain all the steps.") String message) {
